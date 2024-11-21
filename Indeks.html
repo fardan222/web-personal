@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Pribadi - Tugas Kuliah</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="profile">
+            <img src="images/WhatsApp Image 2024-11-21 at 08.31.39_63608726.jpg" alt="Profile Picture" class="profile-pic">
+            <h1>WELCOME EVERYBODY</h1>
+            <p>Halo, selamat datang. Saya seorang pemula di bidang pemograman komputer.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="about">
+            <h2>Tentang Saya</h2>
+            <p>Saya seorang mahasiswa yang berkuliah di Universitas Perjuangan Tasikmalaya prodi Teknik Informatika. Web ini dibuat untuk mengupload tugas dan proyek yang sudah saya kerjakan
+            </p>
+        </section>
+
+        <!-- Bagian Tugas Kuliah -->
+        <section class="task-section">
+            <form id="taskForm" onsubmit="return addTask(event)">
+                <label for="taskTitle">Judul Tugas atau Proyek:</label>
+                <input type="text" id="taskTitle" name="taskTitle" required>
+            
+                <label for="taskDescription">Deskripsi Tugas atau Proyek:</label>
+                <textarea id="taskDescription" name="taskDescription" required></textarea>
+            
+                <!-- Perbarui input file untuk menerima berbagai jenis file -->
+                <label for="taskFile">Pilih File:</label>
+                <input type="file" id="taskFile" name="taskFile" accept="image/*, .pdf, .docx, .txt, .zip, .rar, .pptx" required>
+            
+                <button type="submit">Tambah Tugas</button>
+            </form>
+            
+
+            <h2>Daftar Tugas atau Proyek</h2>
+            <div id="taskList"></div>
+        </section>
+
+        <!-- Bagian Kontak -->
+        <section class="contact">
+            <h2>Kontak Saya</h2>
+            <ul>
+                <li>Email: <a href="mailto:fardansatria13@email.com">fardansatria13@email.com</a></li>
+                <li>Instagram: <a href="https://instagram.com/fardunnn_" target="_blank">fardunnn_</a></li>
+                <li>TikTok: <a href="https://tiktok.com/in/fardannnn" target="_blank">fardannnn</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Fardan. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        let tasks = []; // Array untuk menyimpan tugas yang telah ditambahkan
+
+        // Fungsi untuk menambah tugas
+        function addTask(event) {
+            event.preventDefault(); // Menghentikan pengiriman form
+
+            // Ambil data dari form
+            const taskTitle = document.getElementById('taskTitle').value;
+            const taskDescription = document.getElementById('taskDescription').value;
+            const taskFile = document.getElementById('taskFile').files[0]; // Ambil file yang diupload
+
+            if (!taskFile) {
+                alert("Harap pilih file tugas.");
+                return;
+            }
+
+            // Membaca file yang diupload menggunakan FileReader
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const fileData = e.target.result;
+
+                // Simpan tugas ke dalam array
+                const task = {
+                    title: taskTitle,
+                    description: taskDescription,
+                    fileName: taskFile.name,
+                    fileData: fileData
+                };
+                tasks.push(task);
+
+                // Perbarui daftar tugas
+                displayTasks();
+
+                // Reset form
+                document.getElementById('taskForm').reset();
+            };
+
+            // Membaca file sebagai URL data (untuk menampilkan file atau link)
+            reader.readAsDataURL(taskFile);
+        }
+
+        // Fungsi untuk menampilkan tugas
+        function displayTasks() {
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = ''; // Kosongkan daftar tugas sebelum ditampilkan ulang
+
+            tasks.forEach((task, index) => {
+                const taskItem = document.createElement('div');
+                taskItem.classList.add('task-item');
+
+                taskItem.innerHTML = `
+                    <h3>${task.title}</h3>
+                    <p>${task.description}</p>
+                    <p><strong>File:</strong> ${task.fileName}</p>
+                    <a href="${task.fileData}" download="${task.fileName}">Download Tugas</a>
+                    <button onclick="deleteTask(${index})">Hapus</button>
+                `;
+                taskList.appendChild(taskItem);
+            });
+        }
+
+        // Fungsi untuk menghapus tugas
+        function deleteTask(index) {
+            tasks.splice(index, 1); // Menghapus tugas dari array berdasarkan index
+            displayTasks(); // Perbarui tampilan tugas
+        }
+    </script>
+
+</body>
+</html>

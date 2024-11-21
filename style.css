@@ -1,0 +1,226 @@
+/* Reset dasar untuk margin dan padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body dan layout dasar */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header .profile {
+    margin: 0;
+}
+
+header img.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+/* Profil dan judul */
+header h1 {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+header p {
+    font-size: 1rem;
+}
+
+/* Bagian tentang saya */
+.about {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+}
+
+.about h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.about p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Bagian form tugas */
+.task-section {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+}
+
+.task-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* Form input tugas */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    font-size: 1.1rem;
+}
+
+form input[type="text"],
+form textarea,
+form input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+form button {
+    padding: 10px 15px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+form button:hover {
+    background-color: #444;
+}
+
+/* Daftar tugas */
+#taskList {
+    margin-top: 20px;
+}
+
+.task-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.task-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.task-item p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.task-item a {
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.task-item a:hover {
+    background-color: #0056b3;
+}
+
+.task-item button {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.task-item button:hover {
+    background-color: #c82333;
+}
+
+/* Bagian kontak */
+.contact {
+    background-color: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    border-radius: 8px;
+}
+
+.contact h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.contact ul {
+    list-style-type: none;
+}
+
+.contact li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.contact a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Responsif untuk layar kecil */
+@media (max-width: 768px) {
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    header h1 {
+        font-size: 1.6rem;
+    }
+
+    .about, .task-section, .contact {
+        padding: 15px;
+        margin: 15px;
+    }
+
+    form input[type="text"],
+    form textarea,
+    form input[type="file"],
+    form button {
+        font-size: 1rem;
+    }
+}
